@@ -1,530 +1,1380 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="다이빙솔루션과 함께하는 강릉 당일 보트다이빙 투어">
-  <meta name="theme-color" content="#f4fbff">
-  <title>강릉 다이빙 투어 | 다이빙솔루션</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root {
-      --navy: #062f46;
-      --blue: #087fc2;
-      --sky: #51c9e8;
-      --pale: #edf9fd;
-      --paper: #ffffff;
-      --ink: #102c3b;
-      --muted: #607682;
-      --line: #d8edf4;
-      --warm: #fff7df;
-      --shadow: 0 24px 70px rgba(7, 69, 98, .12);
-      --radius: 30px;
-    }
+<meta
+  name="description"
+  content="2026년 8월 9일 강릉 당일 보트다이빙 투어. 2회 보트다이빙, 강사료, 보험료 포함."
+>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      overflow-x: hidden;
-      background: #f8fcfe;
-      color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
-      line-height: 1.7;
-      word-break: keep-all;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    section { padding: 110px 22px; }
-    .container { width: min(1120px, 100%); margin: 0 auto; }
+<title>강릉 당일 보트다이빙 투어 | 다이빙솔루션</title>
 
-    .skip-link {
-      position: fixed; left: 16px; top: -80px; z-index: 2000;
-      padding: 12px 18px; border-radius: 12px; background: var(--navy); color: #fff;
-    }
-    .skip-link:focus { top: 16px; }
+<style>
+/* =========================
+   기본 설정
+========================= */
 
-    .floating {
-      position: fixed; right: 22px; bottom: 22px; z-index: 999;
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 15px 22px; border-radius: 999px;
-      background: #fee500; color: #191919; font-weight: 900;
-      box-shadow: 0 18px 44px rgba(44, 42, 0, .22);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .floating:hover { transform: translateY(-3px); box-shadow: 0 22px 50px rgba(44, 42, 0, .28); }
+:root{
+  --navy:#07384b;
+  --deep:#042c3d;
+  --blue:#0079c8;
+  --sky:#20bfe8;
+  --light:#f4faff;
+  --line:#d9edf6;
+  --muted:#607985;
+  --white:#ffffff;
+  --yellow-bg:#fff8e7;
+  --yellow-line:#ffe0a0;
+  --yellow-text:#705a23;
+}
 
-    /* IMAGE 1: 메인 대표 사진 */
-    .hero {
-      position: relative; min-height: 100svh; overflow: hidden;
-      display: grid; place-items: center; padding: 40px 22px;
-      color: #fff; text-align: center; background: #06344d;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0, 24, 40, .16), rgba(0, 27, 44, .78)),
-        url("images/1.jpg") center / cover no-repeat;
-      transform: scale(1.12);
-      animation: heroZoom 14s ease-out forwards;
-    }
-    .hero::after {
-      content: ""; position: absolute; inset: auto 0 0; height: 30%;
-      background: linear-gradient(transparent, rgba(1, 34, 52, .34)); pointer-events: none;
-    }
-    @keyframes heroZoom { to { transform: scale(1); } }
-    .hero-content { position: relative; z-index: 2; width: min(1000px, 100%); }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 16px; margin-bottom: 22px; border-radius: 999px;
-      background: rgba(255,255,255,.86); color: var(--blue);
-      font-size: 13px; font-weight: 900; letter-spacing: .12em;
-      backdrop-filter: blur(12px);
-    }
-    h1 {
-      margin-bottom: 26px; font-size: clamp(58px, 10vw, 126px);
-      font-weight: 950; line-height: .84; letter-spacing: -.075em;
-      text-shadow: 0 18px 55px rgba(0,0,0,.34);
-    }
-    .hero-date {
-      margin-bottom: 14px; color: #bff3ff;
-      font-size: clamp(24px, 4vw, 46px); font-weight: 900; letter-spacing: -.04em;
-    }
-    .hero-copy { margin: 0 auto 34px; font-size: clamp(17px, 2vw, 21px); color: rgba(255,255,255,.88); }
-    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      min-height: 52px; padding: 14px 24px; border-radius: 999px;
-      font-weight: 900; transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary { background: var(--sky); color: #052d42; box-shadow: 0 14px 34px rgba(24, 191, 229, .28); }
-    .btn-ghost { border: 1px solid rgba(255,255,255,.48); background: rgba(255,255,255,.12); color: #fff; backdrop-filter: blur(12px); }
-    .scroll-cue { position: absolute; z-index: 3; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 12px; letter-spacing: .18em; color: rgba(255,255,255,.72); }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    .section-head { max-width: 820px; margin: 0 auto 54px; text-align: center; }
-    .kicker { color: var(--blue); font-size: 13px; font-weight: 950; letter-spacing: .14em; }
-    .section-head h2 {
-      margin-top: 10px; color: var(--navy); font-size: clamp(36px, 6vw, 68px);
-      font-weight: 950; line-height: 1.06; letter-spacing: -.065em;
-    }
-    .section-head p { max-width: 730px; margin: 18px auto 0; color: var(--muted); font-size: 18px; }
+html{
+  scroll-behavior:smooth;
+}
 
-    .intro { background: #fff; }
-    .intro-statement {
-      max-width: 900px; margin: 0 auto 64px; text-align: center;
-      color: var(--navy); font-size: clamp(27px, 4vw, 46px); font-weight: 900; line-height: 1.38; letter-spacing: -.045em;
-    }
-    .intro-statement strong { color: var(--blue); }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .feature-card {
-      min-height: 245px; padding: 30px; border: 1px solid var(--line);
-      border-radius: var(--radius); background: linear-gradient(180deg, #fff, #f5fbfe);
-      box-shadow: var(--shadow); transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .feature-card:hover { transform: translateY(-6px); box-shadow: 0 30px 78px rgba(7,69,98,.16); }
-    .feature-no { margin-bottom: 32px; color: var(--sky); font-size: 36px; font-weight: 950; }
-    .feature-card h3 { margin-bottom: 10px; color: var(--navy); font-size: 22px; }
-    .feature-card p { color: var(--muted); }
+body{
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Pretendard",
+    "Noto Sans KR",
+    sans-serif;
 
-    .gallery-strip { padding: 0 22px 36px; background: #fff; }
-    .gallery-grid { width: min(1320px, 100%); margin: 0 auto; display: grid; grid-template-columns: 1.3fr .7fr; gap: 18px; }
-    .photo {
-      position: relative; min-height: 470px; overflow: hidden; border-radius: 36px;
-      background-color: #ccebf5; background-position: center; background-size: cover;
-      box-shadow: var(--shadow);
-    }
-    /* IMAGE 2: 강릉 해안·보트·넓은 수중 풍경 */
-    .photo-large { background-image: url("images/2.jpg"); }
-    /* IMAGE 3: 다이버·해조류·암반 디테일 */
-    .photo-small { background-image: url("images/3.jpg"); }
-    .photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(2,35,52,.38)); }
-    .photo-label { position: absolute; z-index: 2; left: 26px; bottom: 22px; color: #fff; font-size: 14px; font-weight: 900; letter-spacing: .1em; }
+  background:var(--light);
+  color:#102a3a;
+  line-height:1.7;
+  word-break:keep-all;
+  overflow-x:hidden;
+}
 
-    /* IMAGE 4: 일정 섹션 배경 사진 */
-    .schedule {
-      color: #fff;
-      background:
-        linear-gradient(110deg, rgba(1,34,54,.91), rgba(0,58,84,.72)),
-        url("images/4.jpg") center / cover no-repeat;
-    }
-    .schedule .kicker { color: #8eeaff; }
-    .schedule .section-head h2, .schedule .section-head p { color: #fff; }
-    .schedule-note { display: inline-block; margin-top: 18px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.13); font-size: 13px; }
-    .timeline { position: relative; width: min(900px, 100%); margin: 0 auto; }
-    .timeline::before { content: ""; position: absolute; top: 10px; bottom: 10px; left: 116px; width: 2px; background: rgba(255,255,255,.24); }
-    .time-row { position: relative; display: grid; grid-template-columns: 90px 1fr; gap: 64px; padding: 0 0 38px; }
-    .time-row:last-child { padding-bottom: 0; }
-    .time-row::before {
-      content: ""; position: absolute; left: 110px; top: 12px; width: 14px; height: 14px;
-      border: 4px solid rgba(255,255,255,.38); border-radius: 50%; background: #69dcf5;
-      box-shadow: 0 0 0 6px rgba(105,220,245,.1);
-    }
-    .time { padding-top: 2px; text-align: right; color: #a8efff; font-size: 25px; font-weight: 950; }
-    .time-card { padding: 24px 26px; border: 1px solid rgba(255,255,255,.16); border-radius: 22px; background: rgba(255,255,255,.10); backdrop-filter: blur(10px); }
-    .time-card h3 { margin-bottom: 5px; font-size: 23px; }
-    .time-card p { color: rgba(255,255,255,.74); }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    .price-section { background: linear-gradient(180deg, #f8fcfe, var(--pale)); }
-    .price-card {
-      width: min(880px, 100%); margin: 0 auto; padding: 58px 46px;
-      border: 1px solid var(--line); border-radius: 42px; background: #fff; box-shadow: var(--shadow); text-align: center;
-    }
-    .price-badge { display: inline-block; padding: 7px 15px; border-radius: 999px; background: var(--pale); color: var(--blue); font-size: 13px; font-weight: 900; }
-    .price { margin: 18px 0 6px; color: var(--blue); font-size: clamp(58px, 9vw, 100px); font-weight: 950; line-height: 1; letter-spacing: -.075em; }
-    .price-sub { color: var(--muted); font-size: 18px; }
-    .divider { width: 100%; height: 1px; margin: 34px 0; background: var(--line); }
-    .account-card { padding: 30px; border: 1px solid var(--line); border-radius: 26px; background: #f7fcff; text-align: left; }
-    .account-card h3 { margin-bottom: 20px; color: var(--navy); font-size: 24px; }
-    .bank-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e3f1f5; align-items: center; }
-    .bank-row:last-of-type { border-bottom: 0; }
-    .bank-row span { color: var(--muted); font-weight: 800; }
-    .bank-row strong { color: var(--navy); font-size: 19px; }
-    #accountNumber { color: var(--blue); font-size: 23px; letter-spacing: .02em; }
-    .copy-btn {
-      width: 100%; margin-top: 22px; padding: 13px 18px; border: 0; border-radius: 999px;
-      background: var(--navy); color: #fff; cursor: pointer; font-weight: 900;
-    }
-    .price-note { margin-top: 18px; padding: 18px 20px; border: 1px solid #f4dfa2; border-radius: 20px; background: var(--warm); color: #675c34; text-align: left; }
+button{
+  font:inherit;
+}
 
-    .included { background: #fff; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-    .list-card { padding: 36px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
-    .list-card h3 { margin-bottom: 20px; color: var(--navy); font-size: 27px; }
-    .check-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 0; border-bottom: 1px solid #e6f2f6; }
-    .check-row:last-child { border-bottom: 0; }
-    .check-row b { color: var(--navy); }
-    .included-tag { color: var(--blue); font-weight: 950; }
-    .excluded-tag { color: #9baab2; font-weight: 950; }
+section{
+  padding:110px 22px;
+}
 
-    .notice { background: var(--pale); }
-    .notice-list { width: min(900px, 100%); margin: 0 auto; display: grid; gap: 14px; }
-    .notice-row { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 20px 24px; border: 1px solid var(--line); border-radius: 22px; background: #fff; }
-    .notice-row b { color: var(--blue); }
-    .notice-row span { color: var(--muted); }
+.container{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+}
 
-    .why { background: #fff; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .why-card { padding: 34px; border-radius: var(--radius); background: linear-gradient(145deg, var(--navy), #0b6688); color: #fff; box-shadow: var(--shadow); }
-    .why-card .feature-no { color: #8de9ff; }
-    .why-card h3 { margin-bottom: 10px; font-size: 23px; }
-    .why-card p { color: rgba(255,255,255,.72); }
+/* =========================
+   공통 제목
+========================= */
 
-    /* IMAGE 5: 마지막 문의 섹션 배경 사진 */
-    .final {
-      min-height: 78svh; display: grid; place-items: center; color: #fff; text-align: center;
-      background:
-        linear-gradient(180deg, rgba(1,38,58,.28), rgba(1,35,54,.82)),
-        url("images/5.jpg") center / cover no-repeat;
-    }
-    .final h2 { margin-bottom: 22px; font-size: clamp(52px, 8vw, 96px); font-weight: 950; line-height: .94; letter-spacing: -.07em; }
-    .final h2 strong { color: #9bf0ff; }
-    .final p { margin-bottom: 30px; color: rgba(255,255,255,.82); font-size: 19px; }
-    .final .btn-ghost { background: #fff; color: var(--blue); border-color: #fff; }
-    footer { padding: 34px 22px; border-top: 1px solid var(--line); background: #fff; color: #78909a; text-align: center; }
+.section-title{
+  text-align:center;
+  margin-bottom:56px;
+}
 
-    .reveal {
-      opacity: 0; transform: translateY(36px); filter: blur(5px);
-      transition: opacity .8s ease, transform .8s ease, filter .8s ease;
-    }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+.section-title .eyebrow{
+  color:var(--blue);
+  font-size:14px;
+  font-weight:950;
+  letter-spacing:.13em;
+}
 
-    @media (max-width: 920px) {
-      .grid-4, .grid-3 { grid-template-columns: 1fr 1fr; }
-      .gallery-grid, .two-col { grid-template-columns: 1fr; }
-      .photo { min-height: 390px; }
-    }
-    @media (max-width: 680px) {
-      section { padding: 78px 18px; }
-      .floating { left: 18px; right: 18px; justify-content: center; }
-      .hero { padding-bottom: 96px; }
-      .hero-copy br { display: none; }
-      .grid-4, .grid-3 { grid-template-columns: 1fr; }
-      .feature-card { min-height: auto; }
-      .gallery-strip { padding: 0 18px 28px; }
-      .photo { min-height: 300px; border-radius: 26px; }
-      .timeline::before { left: 8px; }
-      .time-row { grid-template-columns: 1fr; gap: 8px; padding-left: 34px; }
-      .time-row::before { left: 1px; top: 10px; }
-      .time { text-align: left; font-size: 21px; }
-      .time-card { padding: 20px; }
-      .price-card { padding: 44px 20px; }
-      .account-card { padding: 24px 20px; }
-      .bank-row, .notice-row { grid-template-columns: 1fr; gap: 4px; }
-      #accountNumber { font-size: 21px; overflow-wrap: anywhere; }
-      .list-card { padding: 28px 22px; }
-      .check-row { align-items: flex-start; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; filter: none; }
-    }
-  </style>
+.section-title h2{
+  margin-top:10px;
+  color:var(--navy);
+  font-size:clamp(36px,6vw,68px);
+  line-height:1.08;
+  letter-spacing:-.07em;
+}
+
+.section-title p{
+  max-width:760px;
+  margin:18px auto 0;
+  color:var(--muted);
+  font-size:18px;
+}
+
+/* =========================
+   버튼
+========================= */
+
+.button-group{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:14px 27px;
+  border-radius:999px;
+  font-weight:900;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.button:hover{
+  transform:translateY(-3px);
+}
+
+.button-primary{
+  background:var(--blue);
+  color:var(--white);
+  box-shadow:0 15px 34px rgba(0,121,200,.28);
+}
+
+.button-secondary{
+  background:var(--white);
+  color:var(--blue);
+  border:1px solid #ccecf7;
+}
+
+/* =========================
+   고정 카카오톡 버튼
+========================= */
+
+.floating-contact{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:999;
+  padding:15px 24px;
+  border-radius:999px;
+  background:var(--blue);
+  color:var(--white);
+  font-weight:950;
+  box-shadow:0 18px 45px rgba(0,121,200,.38);
+  transition:transform .25s ease;
+}
+
+.floating-contact:hover{
+  transform:translateY(-3px);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  text-align:center;
+  color:var(--white);
+  background:#001823;
+}
+
+.hero-background{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      rgba(0,35,55,.16),
+      rgba(0,25,40,.77)
+    ),
+    url("images/1.jpg") center / cover no-repeat;
+
+  transform:scale(1.15);
+  animation:heroZoomOut 14s ease-out forwards;
+}
+
+.hero-background::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 10%,
+      rgba(0,20,35,.18) 70%,
+      rgba(0,15,28,.35) 100%
+    );
+}
+
+@keyframes heroZoomOut{
+  from{
+    transform:scale(1.15);
+  }
+  to{
+    transform:scale(1);
+  }
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1080px;
+  padding:40px 28px;
+}
+
+.hero-label{
+  display:inline-block;
+  margin-bottom:24px;
+  padding:8px 18px;
+  border-radius:999px;
+  background:rgba(235,251,255,.92);
+  color:var(--blue);
+  font-size:14px;
+  font-weight:950;
+  letter-spacing:.11em;
+}
+
+.hero h1{
+  font-size:clamp(58px,10vw,122px);
+  line-height:.86;
+  letter-spacing:-.08em;
+  text-shadow:0 20px 55px rgba(0,0,0,.45);
+}
+
+.hero h1 span{
+  display:block;
+  color:#45dcff;
+  font-size:.58em;
+  letter-spacing:-.06em;
+  margin-top:20px;
+}
+
+.hero-date{
+  margin-top:30px;
+  font-size:clamp(28px,4vw,52px);
+  font-weight:950;
+  text-shadow:0 13px 35px rgba(0,0,0,.42);
+}
+
+.hero-description{
+  margin:18px auto 34px;
+  color:rgba(255,255,255,.86);
+  font-size:20px;
+}
+
+/* =========================
+   투어 핵심 포인트
+========================= */
+
+.point-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.point-card{
+  min-height:260px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:var(--white);
+  box-shadow:0 22px 55px rgba(0,70,100,.08);
+}
+
+.point-number{
+  margin-bottom:16px;
+  color:var(--blue);
+  font-size:38px;
+  font-weight:950;
+}
+
+.point-card h3{
+  margin-bottom:12px;
+  color:var(--navy);
+  font-size:24px;
+}
+
+.point-card p{
+  color:var(--muted);
+}
+
+/* =========================
+   사진 구간
+========================= */
+
+.photo-section{
+  padding:0 22px 40px;
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+  max-width:1280px;
+  margin:0 auto;
+}
+
+.photo{
+  min-height:440px;
+  border-radius:36px;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  box-shadow:0 26px 70px rgba(0,70,100,.15);
+}
+
+.photo-large{
+  background-image:url("images/2.jpg");
+}
+
+.photo-small{
+  background-image:url("images/3.jpg");
+}
+
+/* =========================
+   일정
+========================= */
+
+.schedule-section{
+  position:relative;
+  color:var(--white);
+
+  background:
+    linear-gradient(
+      rgba(0,30,48,.72),
+      rgba(0,19,35,.86)
+    ),
+    url("images/4.jpg") center / cover no-repeat;
+}
+
+.schedule-section .section-title h2,
+.schedule-section .section-title p{
+  color:var(--white);
+}
+
+.schedule-section .section-title .eyebrow{
+  color:#65dcff;
+}
+
+.schedule-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+}
+
+.schedule-card{
+  position:relative;
+  min-height:300px;
+  padding:28px 22px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:28px;
+  background:rgba(255,255,255,.11);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+.schedule-step{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  margin-bottom:20px;
+  border-radius:50%;
+  background:#4cd9ff;
+  color:#003047;
+  font-size:18px;
+  font-weight:950;
+}
+
+.schedule-card h3{
+  margin-bottom:12px;
+  font-size:23px;
+  line-height:1.3;
+}
+
+.schedule-card p{
+  color:rgba(255,255,255,.76);
+  font-size:16px;
+}
+
+.schedule-notice{
+  max-width:820px;
+  margin:30px auto 0;
+  padding:16px 20px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:18px;
+  background:rgba(0,25,40,.38);
+  color:rgba(255,255,255,.82);
+  text-align:center;
+}
+
+/* =========================
+   참가비
+========================= */
+
+.price-card{
+  max-width:880px;
+  margin:0 auto;
+  padding:58px 42px;
+  border:1px solid var(--line);
+  border-radius:42px;
+  background:var(--white);
+  box-shadow:0 35px 90px rgba(0,70,100,.13);
+  text-align:center;
+}
+
+.price-badge{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+  background:#e4f9ff;
+  color:var(--blue);
+  font-weight:950;
+}
+
+.price{
+  margin:20px 0 8px;
+  color:var(--blue);
+  font-size:clamp(66px,9vw,108px);
+  font-weight:950;
+  line-height:1;
+  letter-spacing:-.08em;
+}
+
+.price-summary{
+  color:var(--muted);
+  font-size:18px;
+}
+
+.price-divider{
+  height:1px;
+  margin:34px 0;
+  background:#dff1f7;
+}
+
+.account-card{
+  padding:30px 28px;
+  border:1px solid #d8edf7;
+  border-radius:28px;
+  background:#f6fbff;
+  text-align:left;
+}
+
+.account-card h3{
+  margin-bottom:22px;
+  color:var(--navy);
+  font-size:26px;
+  text-align:center;
+}
+
+.account-row{
+  display:grid;
+  grid-template-columns:125px 1fr;
+  gap:16px;
+  align-items:center;
+  padding:14px 0;
+  border-bottom:1px solid #e1f0f5;
+}
+
+.account-row:last-of-type{
+  border-bottom:0;
+}
+
+.account-row span{
+  color:#708590;
+  font-weight:850;
+}
+
+.account-row strong{
+  color:var(--navy);
+  font-size:20px;
+}
+
+#accountNumber{
+  color:var(--blue);
+  font-size:25px;
+  letter-spacing:.01em;
+}
+
+.copy-button{
+  display:block;
+  margin:24px auto 0;
+  padding:13px 23px;
+  border:0;
+  border-radius:999px;
+  background:var(--navy);
+  color:var(--white);
+  font-weight:900;
+  cursor:pointer;
+}
+
+.price-note{
+  display:grid;
+  gap:7px;
+  margin-top:22px;
+  padding:20px 23px;
+  border:1px solid var(--yellow-line);
+  border-radius:21px;
+  background:var(--yellow-bg);
+  color:var(--yellow-text);
+  text-align:left;
+}
+
+/* =========================
+   포함 / 불포함
+========================= */
+
+.inclusion-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.inclusion-card{
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:var(--white);
+  box-shadow:0 22px 55px rgba(0,70,100,.08);
+}
+
+.inclusion-card h3{
+  margin-bottom:18px;
+  color:var(--navy);
+  font-size:26px;
+}
+
+.inclusion-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px 2px;
+  border-bottom:1px solid #e4f2f7;
+}
+
+.inclusion-row:last-child{
+  border-bottom:0;
+}
+
+.inclusion-row b{
+  color:var(--navy);
+}
+
+.included{
+  color:var(--blue);
+  font-weight:950;
+}
+
+.excluded{
+  color:#9baab1;
+  font-weight:950;
+}
+
+/* =========================
+   수온 / 단체톡방 안내
+========================= */
+
+.notice-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+.notice-card{
+  padding:36px;
+  border-radius:32px;
+  background:var(--white);
+  box-shadow:0 24px 60px rgba(0,70,100,.09);
+}
+
+.notice-card.cold{
+  border:1px solid #bceaff;
+  background:linear-gradient(145deg,#f8fdff,#e9f8ff);
+}
+
+.notice-card.chat{
+  border:1px solid #ffe1a0;
+  background:linear-gradient(145deg,#fffdf7,#fff6dd);
+}
+
+.notice-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:58px;
+  height:58px;
+  margin-bottom:20px;
+  border-radius:18px;
+  background:var(--blue);
+  color:var(--white);
+  font-size:28px;
+}
+
+.notice-card.chat .notice-icon{
+  background:#f1b700;
+}
+
+.notice-card h3{
+  margin-bottom:12px;
+  color:var(--navy);
+  font-size:26px;
+}
+
+.notice-card p{
+  color:var(--muted);
+}
+
+/* =========================
+   왜 다이빙솔루션인가
+========================= */
+
+.solution-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.solution-card{
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:30px;
+  background:var(--white);
+  box-shadow:0 22px 55px rgba(0,70,100,.08);
+}
+
+.solution-card h3{
+  margin:16px 0 10px;
+  color:var(--navy);
+  font-size:24px;
+}
+
+.solution-card p{
+  color:var(--muted);
+}
+
+.solution-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:#e3f8ff;
+  color:var(--blue);
+  font-size:29px;
+}
+
+/* =========================
+   마지막 신청
+========================= */
+
+.final-section{
+  min-height:74vh;
+  display:flex;
+  align-items:center;
+  text-align:center;
+
+  background:
+    linear-gradient(
+      rgba(245,252,255,.34),
+      rgba(245,252,255,.95)
+    ),
+    url("images/5.jpg") center / cover no-repeat;
+}
+
+.final-section h2{
+  color:var(--navy);
+  font-size:clamp(50px,8vw,92px);
+  line-height:.94;
+  letter-spacing:-.08em;
+}
+
+.final-section h2 strong{
+  color:var(--blue);
+}
+
+.final-section p{
+  margin:26px 0 34px;
+  color:#48636f;
+  font-size:20px;
+}
+
+/* =========================
+   푸터
+========================= */
+
+footer{
+  padding:38px 22px;
+  border-top:1px solid #e2f0f5;
+  background:var(--white);
+  color:#78909b;
+  text-align:center;
+}
+
+/* =========================
+   스크롤 애니메이션
+========================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(42px);
+  filter:blur(7px);
+
+  transition:
+    opacity .9s ease,
+    transform .9s ease,
+    filter .9s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
+
+.reveal.fade-out{
+  opacity:0;
+  transform:translateY(-30px);
+  filter:blur(7px);
+}
+
+/* =========================
+   반응형
+========================= */
+
+@media(max-width:980px){
+  .point-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .schedule-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .schedule-card:last-child{
+    grid-column:1 / -1;
+  }
+
+  .solution-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:760px){
+  section{
+    padding:82px 18px;
+  }
+
+  .photo-grid,
+  .inclusion-grid,
+  .notice-grid{
+    grid-template-columns:1fr;
+  }
+
+  .photo{
+    min-height:320px;
+  }
+
+  .price-card{
+    padding:46px 22px;
+  }
+
+  .account-row{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+
+  #accountNumber{
+    font-size:22px;
+  }
+
+  .floating-contact{
+    left:18px;
+    right:18px;
+    text-align:center;
+  }
+}
+
+@media(max-width:560px){
+  .point-grid,
+  .schedule-grid{
+    grid-template-columns:1fr;
+  }
+
+  .schedule-card:last-child{
+    grid-column:auto;
+  }
+
+  .hero-description br{
+    display:none;
+  }
+}
+
+/* 사용자가 동작 최소화를 설정했을 경우 */
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  .hero-background{
+    animation:none;
+    transform:scale(1);
+  }
+
+  .reveal,
+  .reveal.show,
+  .reveal.fade-out{
+    opacity:1;
+    transform:none;
+    filter:none;
+    transition:none;
+  }
+}
+</style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">본문 바로가기</a>
 
-  <a class="floating" href="https://pf.kakao.com/_sxaxmfK/chat" target="_blank" rel="noopener" aria-label="카카오톡 1대1 상담 열기">
-    💬 카카오톡 1:1 상담
-  </a>
+<!-- =========================
+     고정 문의 버튼
+========================= -->
 
-  <header class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-content reveal">
-      <div class="eyebrow">DIVING SOLUTION · DAY TOUR</div>
-      <h1>GANGNEUNG<br>DIVING</h1>
+<a
+  class="floating-contact"
+  href="https://pf.kakao.com/_sxaxmfK/chat"
+  target="_blank"
+  rel="noopener"
+>
+  💬 카카오톡 1:1 문의
+</a>
 
-      <!-- [교체 필요 1] 실제 투어 날짜로 변경하세요. 예: 2026.08.15 SAT -->
-      <div class="hero-date">2026.00.00 · DAY TOUR</div>
+<!-- =========================
+     HERO
+========================= -->
 
-      <p class="hero-copy">
-        깊고 선명한 동해의 블루.<br>
-        강릉의 암반 지형을 만나는 당일 보트다이빙.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" href="#schedule">일정 보기</a>
-        <a class="btn btn-ghost" href="#contact">참여 문의</a>
-      </div>
+<header class="hero">
+  <div class="hero-background"></div>
+
+  <div class="hero-content reveal">
+    <div class="hero-label">
+      DIVING SOLUTION DAY TOUR
     </div>
-    <div class="scroll-cue">SCROLL TO DIVE</div>
-  </header>
 
-  <main id="main">
-    <section class="intro">
-      <div class="container">
-        <p class="intro-statement reveal">
-          멀리 떠나지 않아도,<br>
-          <strong>좋은 바다는 가까이에 있습니다.</strong>
-        </p>
+    <h1>
+      GANGNEUNG
+      <span>DIVING TOUR</span>
+    </h1>
 
-        <div class="section-head reveal">
-          <span class="kicker">TOUR POINT</span>
-          <h2>강릉의 바다를<br>하루에 깊게 만나는 법</h2>
-          <p>
-            강릉을 포함한 동해안은 스쿠버다이빙을 즐길 수 있는 해양레저 지역입니다.
-            현지 해황에 맞춰 암반과 어초 지형을 탐색하며, 계절에 따라 달라지는 동해의 수중 풍경을 경험합니다.
-          </p>
-        </div>
+    <div class="hero-date">
+      2026.08.09 · SUNDAY
+    </div>
 
-        <div class="grid-4">
-          <article class="feature-card reveal">
-            <div class="feature-no">01</div>
-            <h3>당일 투어</h3>
-            <p>아침에 만나 오후에 마무리하는 부담 없는 하루 일정입니다.</p>
-          </article>
-          <article class="feature-card reveal">
-            <div class="feature-no">02</div>
-            <!-- [교체 필요 2] 실제 다이빙 횟수에 맞게 변경하세요. -->
-            <h3>2회 보트다이빙</h3>
-            <p>오전 출항 후 두 번의 다이빙을 차분하게 진행합니다.</p>
-          </article>
-          <article class="feature-card reveal">
-            <div class="feature-no">03</div>
-            <h3>동해 수중 지형</h3>
-            <p>암반, 어초, 계절성 해조류가 만드는 입체적인 풍경을 만납니다.</p>
-          </article>
-          <article class="feature-card reveal">
-            <div class="feature-no">04</div>
-            <h3>안전 중심 운영</h3>
-            <p>브리핑부터 버디 체크, 로그북까지 여유 있게 진행합니다.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <p class="hero-description">
+      푸른 동해와 차가운 수온이 만들어낸 선명한 바다.<br>
+      강릉에서 즐기는 당일 2회 보트다이빙 투어.
+    </p>
 
-    <section class="gallery-strip" aria-label="강릉 다이빙 사진">
-      <div class="gallery-grid">
-        <div class="photo photo-large reveal" role="img" aria-label="강릉 바다 대표 사진">
-          <span class="photo-label">EAST SEA · GANGNEUNG</span>
-        </div>
-        <div class="photo photo-small reveal" role="img" aria-label="강릉 수중 다이버 사진">
-          <span class="photo-label">DIVE THE BLUE</span>
-        </div>
-      </div>
-    </section>
+    <div class="button-group">
+      <a href="#schedule" class="button button-primary">
+        투어 일정
+      </a>
 
-    <section class="schedule" id="schedule">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">DAY SCHEDULE</span>
-          <h2>당일 다이빙 일정</h2>
-          <!-- [교체 필요 3] 아래 시간과 활동은 샘플입니다. 실제 일정으로 수정하세요. -->
-          <p>아래 일정은 샘플이며, 출항 시간과 포인트는 당일 해황에 따라 조정될 수 있습니다.</p>
-          <span class="schedule-note">SAMPLE SCHEDULE · 확정 후 교체</span>
-        </div>
+      <a href="#apply" class="button button-secondary">
+        참가 문의
+      </a>
+    </div>
+  </div>
+</header>
 
-        <div class="timeline">
-          <div class="time-row reveal">
-            <div class="time">08:00</div>
-            <div class="time-card"><h3>현장 도착</h3><p>참가자 확인, 장비 준비, 당일 해황 및 안전 브리핑</p></div>
-          </div>
-          <div class="time-row reveal">
-            <div class="time">09:00</div>
-            <div class="time-card"><h3>1차 출항 · 첫 번째 다이빙</h3><p>버디 체크 후 첫 포인트에서 보트다이빙 진행</p></div>
-          </div>
-          <div class="time-row reveal">
-            <div class="time">10:30</div>
-            <div class="time-card"><h3>두 번째 다이빙</h3><p>충분한 수면 휴식 후 두 번째 포인트 다이빙</p></div>
-          </div>
-          <div class="time-row reveal">
-            <div class="time">12:00</div>
-            <div class="time-card"><h3>장비 정리 · 로그북 · 식사</h3><p>장비 세척 및 정리 후 로그북 작성과 자유 식사</p></div>
-          </div>
-          <div class="time-row reveal">
-            <div class="time">14:00</div>
-            <div class="time-card"><h3>투어 종료</h3><p>당일 일정을 마치고 개별 또는 센터 차량으로 이동</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<main>
 
-    <section class="price-section" id="price">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">TOUR PRICE</span>
-          <h2>참가비 안내</h2>
-        </div>
+<!-- =========================
+     투어 포인트
+========================= -->
 
-        <div class="price-card reveal">
-          <span class="price-badge">1인 기준 · SAMPLE PRICE</span>
-          <!-- [교체 필요 4] 아래 150,000원은 임시 샘플 금액입니다. -->
-          <div class="price">150,000원</div>
-          <p class="price-sub">2회 보트다이빙 + 보험료 포함</p>
-          <div class="divider"></div>
+<section>
+  <div class="container">
 
-          <div class="account-card">
-            <h3>참가비 입금 계좌</h3>
-            <div class="bank-row"><span>은행</span><strong>카카오뱅크</strong></div>
-            <div class="bank-row"><span>계좌번호</span><strong id="accountNumber">3333-08-0806797</strong></div>
-            <div class="bank-row"><span>예금주</span><strong>다이빙솔루션 (강성모)</strong></div>
-            <button class="copy-btn" id="copyBtn" type="button">📋 계좌번호 복사</button>
-          </div>
+    <div class="section-title reveal">
+      <span class="eyebrow">TOUR POINT</span>
 
-          <!-- [교체 필요 5] 교통비 및 예약 확정 규정을 실제 운영 기준으로 바꾸세요. -->
-          <div class="price-note">
-            <b>입금 안내</b><br>
-            참가비 입금 후 카카오톡으로 참가일과 입금자명을 보내주세요.<br>
-            센터 동행 차량 이용 시 왕복 교통비 20,000원이 별도 청구됩니다.
-          </div>
-        </div>
-      </div>
-    </section>
+      <h2>
+        가까운 동해에서 만나는<br>
+        깊고 선명한 푸른 바다
+      </h2>
 
-    <section class="included">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">INCLUDED · NOT INCLUDED</span>
-          <h2>포함 · 불포함 사항</h2>
-          <p>아래 항목은 울진 당일 투어 기준으로 넣은 샘플입니다. 강릉 운영 기준에 맞춰 교체하세요.</p>
-        </div>
+      <p>
+        강릉의 동해 바다에서 진행되는 당일 보트다이빙입니다.
+        하루 동안 두 번의 다이빙에 집중할 수 있도록 간결하고 편안하게 구성했습니다.
+      </p>
+    </div>
 
-        <!-- [교체 필요 6] 포함·불포함 항목 전체를 확정 후 수정하세요. -->
-        <div class="two-col">
-          <div class="list-card reveal">
-            <h3>포함사항</h3>
-            <div class="check-row"><b>2회 보트다이빙</b><span class="included-tag">포함</span></div>
-            <div class="check-row"><b>다이빙 보험료</b><span class="included-tag">포함</span></div>
-            <div class="check-row"><b>투어 진행 및 브리핑</b><span class="included-tag">포함</span></div>
-          </div>
-          <div class="list-card reveal">
-            <h3>불포함사항</h3>
-            <div class="check-row"><b>장비 대여료</b><span class="excluded-tag">불포함</span></div>
-            <div class="check-row"><b>왕복 교통비</b><span class="excluded-tag">불포함</span></div>
-            <div class="check-row"><b>숙박</b><span class="excluded-tag">불포함</span></div>
-            <div class="check-row"><b>식사 및 개인 경비</b><span class="excluded-tag">불포함</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="point-grid">
 
-    <section class="notice">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">NOTICE</span>
-          <h2>예약 전 확인사항</h2>
-        </div>
-
-        <div class="notice-list">
-          <div class="notice-row reveal"><b>해양 상황</b><span>기상과 파고, 수온 등 현지 상황에 따라 출항 시간과 포인트가 변경되거나 투어가 취소될 수 있습니다.</span></div>
-          <div class="notice-row reveal"><b>장비 대여</b><span>장비 대여가 필요한 경우 사이즈와 품목을 카카오톡으로 미리 알려주세요.</span></div>
-          <div class="notice-row reveal"><b>추가 다이빙 · 교육</b><span>추가 다이빙, 체크다이빙, 스킬업 교육은 반드시 사전에 협의해 주세요.</span></div>
-          <div class="notice-row reveal"><b>참가 기준</b><span>참가 가능한 자격과 최근 다이빙 이력은 포인트 및 해황에 따라 달라질 수 있으니 신청 전 상담해 주세요.</span></div>
-          <!-- [교체 필요 7] 실제 취소·환불 규정을 확정한 뒤 문구를 교체하세요. -->
-          <div class="notice-row reveal"><b>취소 · 환불</b><span>현재 샘플 페이지입니다. 확정된 취소·환불 규정은 참가 접수 전에 별도로 안내합니다.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="why">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">WHY DIVING SOLUTION</span>
-          <h2>짧은 하루일수록<br>운영이 중요합니다</h2>
-          <p>다이빙솔루션은 무리하게 횟수를 채우기보다, 참가자가 안전하고 편안하게 바다를 즐기는 데 집중합니다.</p>
-        </div>
-        <div class="grid-3">
-          <article class="why-card reveal"><div class="feature-no">01</div><h3>PADI 강사 직접 진행</h3><p>준비부터 브리핑, 입수와 로그북까지 함께합니다.</p></article>
-          <article class="why-card reveal"><div class="feature-no">02</div><h3>소규모 팀 중심</h3><p>참가자의 경험과 컨디션을 살피며 여유 있게 운영합니다.</p></article>
-          <article class="why-card reveal"><div class="feature-no">03</div><h3>안전을 우선한 판단</h3><p>당일 해황과 팀의 상태를 기준으로 포인트와 진행을 결정합니다.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="final" id="contact">
-      <div class="container reveal">
-        <h2><strong>GANGNEUNG</strong><br>DAY DIVING</h2>
+      <article class="point-card reveal">
+        <div class="point-number">01</div>
+        <h3>8월 9일 당일투어</h3>
         <p>
-          강릉의 푸른 수중을 다이빙솔루션과 함께 만나보세요.<br>
-          참가일과 장비 대여 여부를 알려주시면 빠르게 안내해 드립니다.
+          숙박 없이 하루 동안 진행되는 강릉 보트다이빙 일정입니다.
         </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://pf.kakao.com/_sxaxmfK/chat" target="_blank" rel="noopener">카카오톡 1:1 문의</a>
-          <a class="btn btn-ghost" href="tel:010-9879-6365">010-9879-6365 전화문의</a>
-        </div>
+      </article>
+
+      <article class="point-card reveal">
+        <div class="point-number">02</div>
+        <h3>2회 보트다이빙</h3>
+        <p>
+          기본 일정은 강릉 해역에서 진행되는 2회 보트다이빙입니다.
+        </p>
+      </article>
+
+      <article class="point-card reveal">
+        <div class="point-number">03</div>
+        <h3>강사료 · 보험료 포함</h3>
+        <p>
+          다이빙 진행 강사료와 투어 보험료가 참가비에 포함됩니다.
+        </p>
+      </article>
+
+      <article class="point-card reveal">
+        <div class="point-number">04</div>
+        <h3>수온 대비 필수</h3>
+        <p>
+          동해 수온이 낮을 수 있으므로 개인 보온 장비를 충분히 준비해야 합니다.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     사진
+========================= -->
+
+<section class="photo-section">
+  <div class="photo-grid">
+    <div
+      class="photo photo-large reveal"
+      role="img"
+      aria-label="강릉 동해 바다 사진"
+    ></div>
+
+    <div
+      class="photo photo-small reveal"
+      role="img"
+      aria-label="강릉 수중 다이버 사진"
+    ></div>
+  </div>
+</section>
+
+<!-- =========================
+     일정
+========================= -->
+
+<section class="schedule-section" id="schedule">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span class="eyebrow">DAY SCHEDULE</span>
+      <h2>당일 다이빙 일정</h2>
+
+      <p>
+        정확한 집합 시간과 장소는 참가 신청 완료 후
+        별도의 단체 카카오톡방에서 안내합니다.
+      </p>
+    </div>
+
+    <div class="schedule-grid">
+
+      <article class="schedule-card reveal">
+        <div class="schedule-step">1</div>
+        <h3>현장 집합</h3>
+        <p>
+          참가자 확인, 장비 준비 및 당일 해양 상황을 안내합니다.
+        </p>
+      </article>
+
+      <article class="schedule-card reveal">
+        <div class="schedule-step">2</div>
+        <h3>브리핑 및 출항</h3>
+        <p>
+          안전 브리핑과 버디 확인을 마친 후 보트로 출항합니다.
+        </p>
+      </article>
+
+      <article class="schedule-card reveal">
+        <div class="schedule-step">3</div>
+        <h3>1차 보트다이빙</h3>
+        <p>
+          당일 해양 상황에 적합한 포인트에서 첫 번째 다이빙을 진행합니다.
+        </p>
+      </article>
+
+      <article class="schedule-card reveal">
+        <div class="schedule-step">4</div>
+        <h3>수면휴식 · 2차 다이빙</h3>
+        <p>
+          충분한 수면휴식 후 두 번째 보트다이빙을 진행합니다.
+        </p>
+      </article>
+
+      <article class="schedule-card reveal">
+        <div class="schedule-step">5</div>
+        <h3>장비 정리 · 해산</h3>
+        <p>
+          장비 세척과 로그북 작성을 마친 후 당일 일정을 종료합니다.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="schedule-notice reveal">
+      ※ 기상과 해양 상황에 따라 집합 시간, 출항 시간, 포인트 및 일정이 변경될 수 있습니다.
+    </div>
+
+  </div>
+</section>
+
+<!-- =========================
+     참가비
+========================= -->
+
+<section id="price">
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span class="eyebrow">PRICE</span>
+      <h2>참가비 안내</h2>
+    </div>
+
+    <div class="price-card reveal">
+
+      <div class="price-badge">
+        1인 기준
       </div>
-    </section>
-  </main>
 
-  <footer>Diving Solution · Gangneung Day Diving Tour</footer>
+      <div class="price">
+        150,000원
+      </div>
 
-  <script>
-    const copyButton = document.getElementById('copyBtn');
-    const accountNumber = '3333-08-0806797';
+      <p class="price-summary">
+        2회 보트다이빙 · 강사료 · 보험료 포함
+      </p>
 
-    copyButton.addEventListener('click', async () => {
-      const originalText = '📋 계좌번호 복사';
-      try {
-        await navigator.clipboard.writeText(accountNumber);
-        copyButton.textContent = '✅ 복사 완료';
-      } catch (error) {
-        const helper = document.createElement('textarea');
-        helper.value = accountNumber;
-        helper.style.position = 'fixed';
-        helper.style.opacity = '0';
-        document.body.appendChild(helper);
-        helper.select();
-        document.execCommand('copy');
-        helper.remove();
-        copyButton.textContent = '✅ 복사 완료';
-      }
-      window.setTimeout(() => { copyButton.textContent = originalText; }, 1800);
-    });
+      <div class="price-divider"></div>
 
-    const revealElements = document.querySelectorAll('.reveal');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      <div class="account-card">
+        <h3>참가비 입금 계좌</h3>
 
-    if (reducedMotion || !('IntersectionObserver' in window)) {
-      revealElements.forEach((element) => element.classList.add('is-visible'));
-    } else {
-      const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          entry.target.classList.toggle('is-visible', entry.isIntersecting);
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+        <div class="account-row">
+          <span>은행</span>
+          <strong>카카오뱅크</strong>
+        </div>
 
-      revealElements.forEach((element) => revealObserver.observe(element));
+        <div class="account-row">
+          <span>계좌번호</span>
+          <strong id="accountNumber">3333-08-0806797</strong>
+        </div>
+
+        <div class="account-row">
+          <span>예금주</span>
+          <strong>다이빙솔루션 (강성모)</strong>
+        </div>
+
+        <button
+          type="button"
+          class="copy-button"
+          id="copyButton"
+          onclick="copyAccountNumber()"
+        >
+          📋 계좌번호 복사
+        </button>
+      </div>
+
+      <div class="price-note">
+        <p>
+          ✔ 참가 신청 후 참가비 입금이 확인되면 예약이 확정됩니다.
+        </p>
+
+        <p>
+          ✔ 입금 후 카카오톡으로 참가자 성함을 보내주세요.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     포함 / 불포함
+========================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span class="eyebrow">INCLUDED / NOT INCLUDED</span>
+      <h2>포함 · 불포함 사항</h2>
+    </div>
+
+    <div class="inclusion-grid">
+
+      <article class="inclusion-card reveal">
+        <h3>포함사항</h3>
+
+        <div class="inclusion-row">
+          <b>보트다이빙 2회</b>
+          <span class="included">포함</span>
+        </div>
+
+        <div class="inclusion-row">
+          <b>다이빙 진행 강사료</b>
+          <span class="included">포함</span>
+        </div>
+
+        <div class="inclusion-row">
+          <b>투어 보험료</b>
+          <span class="included">포함</span>
+        </div>
+      </article>
+
+      <article class="inclusion-card reveal">
+        <h3>불포함사항</h3>
+
+        <div class="inclusion-row">
+          <b>교통비</b>
+          <span class="excluded">불포함</span>
+        </div>
+
+        <div class="inclusion-row">
+          <b>숙박</b>
+          <span class="excluded">불포함</span>
+        </div>
+
+        <div class="inclusion-row">
+          <b>장비 대여료</b>
+          <span class="excluded">불포함</span>
+        </div>
+
+        <div class="inclusion-row">
+          <b>식사</b>
+          <span class="excluded">불포함</span>
+        </div>
+
+        <div class="inclusion-row">
+          <b>개인 사용 경비</b>
+          <span class="excluded">불포함</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     필수 안내
+========================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span class="eyebrow">IMPORTANT NOTICE</span>
+      <h2>참가 전 꼭 확인해 주세요</h2>
+    </div>
+
+    <div class="notice-grid">
+
+      <article class="notice-card cold reveal">
+        <div class="notice-icon">❄️</div>
+
+        <h3>낮은 수온에 대비해 주세요</h3>
+
+        <p>
+          강릉을 포함한 동해는 시기와 수심에 따라 수온이 낮게 느껴질 수 있습니다.
+          후드, 장갑, 적절한 슈트 등 개인 보온 준비에 각별히 신경 써주세요.
+        </p>
+      </article>
+
+      <article class="notice-card chat reveal">
+        <div class="notice-icon">💬</div>
+
+        <h3>단체 카카오톡방 안내</h3>
+
+        <p>
+          참가 신청과 입금 확인이 완료되면 별도의 단체 카카오톡방을 개설합니다.
+          집합 장소, 준비물, 출발 시간과 현장 안내사항은 단체방에서 전달합니다.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     왜 다이빙솔루션인가
+========================= -->
+
+<section>
+  <div class="container">
+
+    <div class="section-title reveal">
+      <span class="eyebrow">WHY DIVING SOLUTION</span>
+      <h2>왜 다이빙솔루션인가?</h2>
+
+      <p>
+        당일투어에서도 안전과 편안함을 타협하지 않습니다.
+        다이버가 바다에 집중할 수 있도록 필요한 부분을 꼼꼼하게 준비합니다.
+      </p>
+    </div>
+
+    <div class="solution-grid">
+
+      <article class="solution-card reveal">
+        <div class="solution-icon">🛟</div>
+        <h3>안전 중심 운영</h3>
+        <p>
+          해양 상황과 참가자의 컨디션을 확인하고 무리하지 않는 일정으로 진행합니다.
+        </p>
+      </article>
+
+      <article class="solution-card reveal">
+        <div class="solution-icon">👥</div>
+        <h3>다이버 중심 진행</h3>
+        <p>
+          횟수만 채우는 투어가 아니라 참가자가 편안하게 다이빙할 수 있도록 운영합니다.
+        </p>
+      </article>
+
+      <article class="solution-card reveal">
+        <div class="solution-icon">🌊</div>
+        <h3>좋은 포인트 선정</h3>
+        <p>
+          당일 기상과 해양 상황을 고려하여 안전하고 적합한 다이빙 포인트를 선정합니다.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =========================
+     마지막 신청
+========================= -->
+
+<section class="final-section" id="apply">
+  <div class="container reveal">
+
+    <h2>
+      <strong>GANGNEUNG</strong><br>
+      DAY DIVING
+    </h2>
+
+    <p>
+      8월의 푸른 동해에서 즐기는 두 번의 보트다이빙.<br>
+      강릉 당일투어를 다이빙솔루션과 함께하세요.
+    </p>
+
+    <div class="button-group">
+      <a
+        href="https://pf.kakao.com/_sxaxmfK/chat"
+        target="_blank"
+        rel="noopener"
+        class="button button-primary"
+      >
+        카카오톡 1:1 문의
+      </a>
+
+      <a
+        href="tel:010-9879-6365"
+        class="button button-secondary"
+      >
+        010-9879-6365 전화문의
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Diving Solution · 2026 Gangneung Day Boat Diving Tour
+</footer>
+
+<script>
+/* =========================
+   계좌번호 복사
+========================= */
+
+async function copyAccountNumber(){
+  const accountNumber = "3333-08-0806797";
+  const button = document.getElementById("copyButton");
+
+  try{
+    await navigator.clipboard.writeText(accountNumber);
+
+    button.textContent = "✅ 복사 완료";
+
+    setTimeout(() => {
+      button.textContent = "📋 계좌번호 복사";
+    }, 2000);
+
+  }catch(error){
+    window.prompt(
+      "아래 계좌번호를 직접 복사해 주세요.",
+      accountNumber
+    );
+  }
+}
+
+/* =========================
+   스크롤 등장 / 사라짐
+========================= */
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+const revealObserver =
+  new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          entry.target.classList.remove("fade-out");
+          return;
+        }
+
+        if(entry.boundingClientRect.top < 0){
+          entry.target.classList.remove("show");
+          entry.target.classList.add("fade-out");
+        }else{
+          entry.target.classList.remove("show");
+          entry.target.classList.remove("fade-out");
+        }
+
+      });
+    },
+    {
+      threshold:0.16
     }
-  </script>
+  );
+
+revealElements.forEach(element => {
+  revealObserver.observe(element);
+});
+</script>
+
 </body>
 </html>
